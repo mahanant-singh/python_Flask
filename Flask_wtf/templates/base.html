@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flask-WTF Form{% endblock %}</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            background: #3a0202;
+            margin: 0;
+        }
+
+        header {
+            background: #333;
+            padding: 10px;
+            color: white;
+        }
+
+        nav a {
+            margin: 0 10px;
+            color: antiquewhite;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 700px;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Flask-WTF Registration Form</h1>
+
+    <nav>
+        <a href="{{ url_for('register') }}">Home</a>
+    </nav>
+</header>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, msg in messages %}
+            <p class="{{ category }}">{{ msg }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+</body>
+</html>

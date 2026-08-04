@@ -1,0 +1,11 @@
+# form ko app.py ma import kara 
+
+from flask_wtf import FlaskForm
+from wtforms import StringField,PasswordField,SubmitField
+from wtforms.validators import DataRequired,Email,Length
+
+class RegistrationForm(FlaskForm):
+    name=StringField("Full Name",validators=[DataRequired()])
+    email=StringField("email",validators=[DataRequired(),Email()])
+    password=PasswordField("Password",validators=[DataRequired(),Length(min=6)])
+    submit=SubmitField("Register")
